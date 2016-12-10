@@ -1,0 +1,21 @@
+PODS:
+  - DATAStack (6.1.2)
+  - Networking (2.4.1)
+  - Sync (2.5.0):
+    - DATAStack (~> 6.1.2)
+    - SYNCPropertyMapper (~> 5.2.0)
+  - SYNCPropertyMapper (5.2.0)
+
+DEPENDENCIES:
+  - Networking (~> 2.0)
+  - Sync (~> 2.0)
+
+SPEC CHECKSUMS:
+  DATAStack: a45fc144e15193f1b22c26b507cc46655ce96a71
+  Networking: 933a5b4ffa9153fae7043ea4d7bf33ffa5cfb41d
+  Sync: f9976b189dd5d0037f863c2df387fd67fd732413
+  SYNCPropertyMapper: b3157f5183285c8a25ba23877b95a06ec2547e73
+
+PODFILE CHECKSUM: d7ae8bca11a5fc228b3c2ced39e34a786cf46934
+
+COCOAPODS: 1.1.1
