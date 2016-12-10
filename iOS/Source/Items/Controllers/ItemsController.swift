@@ -21,7 +21,7 @@ class ItemsController: UITableViewController {
 
         self.tableView.dataSource = self
         self.tableView.register(ItemCell.self, forCellReuseIdentifier: ItemCell.cellIdentifier)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(refresh))
 
         self.users = self.fetcher.fetchLocalUsers()
     }
@@ -38,10 +38,14 @@ class ItemsController: UITableViewController {
         return cell
     }
 
-    func add() {
-        self.fetcher.add {
-            self.users = self.fetcher.fetchLocalUsers()
-            self.tableView.reloadData()
+    func refresh() {
+        self.fetcher.users { error in
+            if let _ = error {
+                // handle error
+            } else {
+                self.users = self.fetcher.fetchLocalUsers()
+                self.tableView.reloadData()
+            }
         }
     }
 }
