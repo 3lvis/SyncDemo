@@ -1,0 +1,119 @@
+BCSymbolMap Version: 2.0
+-[NSManagedObject(SYNCPropertyMapper) hyp_fillWithDictionary:]
+-[NSManagedObject(SYNCPropertyMapper) hyp_setDictionaryValue:forKey:attributeDescription:]
+-[NSManagedObject(SYNCPropertyMapper) hyp_dictionary]
+-[NSManagedObject(SYNCPropertyMapper) hyp_dictionaryUsingInflectionType:]
+-[NSManagedObject(SYNCPropertyMapper) hyp_dictionaryUsinginflectionType:andRelationshipType:]
+-[NSManagedObject(SYNCPropertyMapper) hyp_dictionaryUsingRelationshipType:]
+-[NSManagedObject(SYNCPropertyMapper) hyp_dictionaryUsingInflectionType:andRelationshipType:]
+-[NSManagedObject(SYNCPropertyMapper) hyp_dictionaryWithDateFormatter:]
+-[NSManagedObject(SYNCPropertyMapper) hyp_dictionaryWithDateFormatter:usingRelationshipType:]
+-[NSManagedObject(SYNCPropertyMapper) hyp_dictionaryWithDateFormatter:parent:usingRelationshipType:]
+-[NSManagedObject(SYNCPropertyMapper) hyp_dictionaryWithDateFormatter:parent:usingInflectionType:andRelationshipType:]
+-[NSManagedObject(SYNCPropertyMapper) attributesForToOneRelationship:relationshipName:usingRelationshipType:parent:dateFormatter:inflectionType:]
+-[NSManagedObject(SYNCPropertyMapper) attributesForToManyRelationship:relationshipName:usingRelationshipType:parent:dateFormatter:inflectionType:]
+-[NSManagedObject(SYNCPropertyMapper) defaultDateFormatter]
+___59-[NSManagedObject(SYNCPropertyMapper) defaultDateFormatter]_block_invoke
+_defaultDateFormatter._dateFormatter
+_defaultDateFormatter.onceToken
+___block_descriptor_tmp
+___block_literal_global
+Apple LLVM version 8.0.0 (clang-800.0.42.1)
+/Users/elvis/Projects/syncdb/SYNCPropertyMapper/Sources/NSManagedObject-SYNCPropertyMapper/SYNCPropertyMapper.m
+/Users/elvis/Projects/syncdb/SYNCPropertyMapper
+__59-[NSManagedObject(SYNCPropertyMapper) defaultDateFormatter]_block_invoke
+_dispatch_once
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk/usr/include/dispatch/once.h
++[SYNCInflectionsStringStorage sharedInstance]
+___46+[SYNCInflectionsStringStorage sharedInstance]_block_invoke
+___copy_helper_block_
+___destroy_helper_block_
+-[SYNCInflectionsStringStorage init]
+-[SYNCInflectionsStringStorage snakeCaseStorage]
+-[SYNCInflectionsStringStorage camelCaseStorage]
+-[SYNCInflectionsStringStorage performOnDictionary:]
+-[SYNCInflectionsStringStorage setSnakeCaseStorage:]
+-[SYNCInflectionsStringStorage setCamelCaseStorage:]
+-[SYNCInflectionsStringStorage serialQueue]
+-[SYNCInflectionsStringStorage setSerialQueue:]
+-[SYNCInflectionsStringStorage .cxx_destruct]
+-[NSString(SYNCInflections) hyp_snakeCase]
+___Block_byref_object_copy_
+___Block_byref_object_dispose_
+___42-[NSString(SYNCInflections) hyp_snakeCase]_block_invoke
+___copy_helper_block_.33
+___destroy_helper_block_.34
+___42-[NSString(SYNCInflections) hyp_snakeCase]_block_invoke.42
+___copy_helper_block_.45
+___destroy_helper_block_.46
+-[NSString(SYNCInflections) hyp_camelCase]
+___42-[NSString(SYNCInflections) hyp_camelCase]_block_invoke
+___copy_helper_block_.49
+___destroy_helper_block_.50
+___42-[NSString(SYNCInflections) hyp_camelCase]_block_invoke.63
+___copy_helper_block_.64
+___destroy_helper_block_.65
+-[NSString(SYNCInflections) hyp_containsWord:]
+-[NSString(SYNCInflections) hyp_lowerCaseFirstLetter]
+-[NSString(SYNCInflections) hyp_replaceIdentifierWithString:]
++[NSString(SYNCInflections) acronyms]
+_sharedInstance.once
+_sharedInstance.sharedInstance
+_OBJC_IVAR_$_SYNCInflectionsStringStorage._serialQueue
+_OBJC_IVAR_$_SYNCInflectionsStringStorage._snakeCaseStorage
+_OBJC_IVAR_$_SYNCInflectionsStringStorage._camelCaseStorage
+___block_descriptor_tmp.35
+___block_descriptor_tmp.47
+___block_descriptor_tmp.51
+___block_descriptor_tmp.66
+/Users/elvis/Projects/syncdb/SYNCPropertyMapper/Sources/NSString-SYNCInflections/NSString+SYNCInflections.m
+__destroy_helper_block_
+__copy_helper_block_
+__42-[NSString(SYNCInflections) hyp_camelCase]_block_invoke.63
+__42-[NSString(SYNCInflections) hyp_camelCase]_block_invoke
+__42-[NSString(SYNCInflections) hyp_snakeCase]_block_invoke.42
+__42-[NSString(SYNCInflections) hyp_snakeCase]_block_invoke
+__Block_byref_object_dispose_
+__Block_byref_object_copy_
+__46+[SYNCInflectionsStringStorage sharedInstance]_block_invoke
+-[NSManagedObject(SYNCPropertyMapperHelpers) valueForAttributeDescription:dateFormatter:relationshipType:]
+-[NSManagedObject(SYNCPropertyMapperHelpers) attributeDescriptionForRemoteKey:]
+-[NSManagedObject(SYNCPropertyMapperHelpers) attributeDescriptionForRemoteKey:usingInflectionType:]
+___99-[NSManagedObject(SYNCPropertyMapperHelpers) attributeDescriptionForRemoteKey:usingInflectionType:]_block_invoke
+___99-[NSManagedObject(SYNCPropertyMapperHelpers) attributeDescriptionForRemoteKey:usingInflectionType:]_block_invoke.76
+___copy_helper_block_.77
+___destroy_helper_block_.78
+-[NSManagedObject(SYNCPropertyMapperHelpers) attributeDescriptionsForRemoteKeyPath:]
+___84-[NSManagedObject(SYNCPropertyMapperHelpers) attributeDescriptionsForRemoteKeyPath:]_block_invoke
+___copy_helper_block_.85
+___destroy_helper_block_.86
+-[NSManagedObject(SYNCPropertyMapperHelpers) remoteKeyForAttributeDescription:]
+-[NSManagedObject(SYNCPropertyMapperHelpers) remoteKeyForAttributeDescription:inflectionType:]
+-[NSManagedObject(SYNCPropertyMapperHelpers) remoteKeyForAttributeDescription:usingRelationshipType:]
+-[NSManagedObject(SYNCPropertyMapperHelpers) remoteKeyForAttributeDescription:usingRelationshipType:inflectionType:]
+-[NSManagedObject(SYNCPropertyMapperHelpers) valueForAttributeDescription:usingRemoteValue:]
+-[NSManagedObject(SYNCPropertyMapperHelpers) remotePrefixUsingInflectionType:]
+-[NSManagedObject(SYNCPropertyMapperHelpers) prefixedAttribute:usingInflectionType:]
+-[NSManagedObject(SYNCPropertyMapperHelpers) reservedKeysUsingInflectionType:]
++[NSManagedObject(SYNCPropertyMapperHelpers) reservedAttributes]
+___block_descriptor_tmp.79
+___block_descriptor_tmp.87
+/Users/elvis/Projects/syncdb/SYNCPropertyMapper/Sources/NSManagedObject-SYNCPropertyMapper/NSManagedObject+SYNCPropertyMapperHelpers.m
+NSMakeRange
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSRange.h
+__84-[NSManagedObject(SYNCPropertyMapperHelpers) attributeDescriptionsForRemoteKeyPath:]_block_invoke
+__99-[NSManagedObject(SYNCPropertyMapperHelpers) attributeDescriptionForRemoteKey:usingInflectionType:]_block_invoke.76
+__99-[NSManagedObject(SYNCPropertyMapperHelpers) attributeDescriptionForRemoteKey:usingInflectionType:]_block_invoke
++[NSDate(SYNCPropertyMapper) dateFromDateString:]
++[NSDate(SYNCPropertyMapper) dateFromISO8601String:]
++[NSDate(SYNCPropertyMapper) dateFromUnixTimestampNumber:]
++[NSDate(SYNCPropertyMapper) dateFromUnixTimestampString:]
+-[NSString(Parser) dateType]
+/Users/elvis/Projects/syncdb/SYNCPropertyMapper/Sources/DateParser/NSDate+SYNCPropertyMapper.m
+-[NSEntityDescription(SYNCPrimaryKey) sync_primaryKeyAttribute]
+___63-[NSEntityDescription(SYNCPrimaryKey) sync_primaryKeyAttribute]_block_invoke
+-[NSEntityDescription(SYNCPrimaryKey) sync_localPrimaryKey]
+-[NSEntityDescription(SYNCPrimaryKey) sync_remotePrimaryKey]
+/Users/elvis/Projects/syncdb/SYNCPropertyMapper/Sources/NSEntityDescription-SYNCPrimaryKey/NSEntityDescription+SYNCPrimaryKey.m
+__63-[NSEntityDescription(SYNCPrimaryKey) sync_primaryKeyAttribute]_block_invoke
+/Users/elvis/Library/Developer/Xcode/DerivedData/Demo-fjnypsdecdgdzzddemwcebukyngc/Build/Intermediates/Demo.build/Release-iphoneos/SYNCPropertyMapper-iOS.build/DerivedSources/SYNCPropertyMapper_vers.c
