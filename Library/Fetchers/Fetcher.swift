@@ -22,7 +22,7 @@ class Fetcher {
                 completion(error)
             } else {
                 let usersJSON = json as! [[String: Any]]
-                Sync.changes(usersJSON, inEntityNamed: User.entity().name!, predicate: nil, persistentContainer: self.persistentContainer, operations: [.All], completion: completion)
+                self.persistentContainer.sync(usersJSON, inEntityNamed: User.entity().name!, completion: completion)
             }
         }
     }
