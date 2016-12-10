@@ -1,9 +1,10 @@
 import UIKit
+import Sync
 
 class ItemsController: UITableViewController {
     var fetcher: Fetcher
 
-    let cellIdentifier = String(describing: UITableViewCell.self)
+    var users = [User]()
 
     init(style: UITableViewStyle = .plain, fetcher: Fetcher) {
         self.fetcher = fetcher
@@ -19,17 +20,28 @@ class ItemsController: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.dataSource = self
-        self.tableView.register(ItemCell.self, forCellReuseIdentifier: self.cellIdentifier)
+        self.tableView.register(ItemCell.self, forCellReuseIdentifier: ItemCell.cellIdentifier)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
+
+        self.users = self.fetcher.fetchLocalUsers()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return users.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as! ItemCell
-        cell.textLabel?.text = "Hi there"
+        let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.cellIdentifier, for: indexPath) as! ItemCell
+        let user = self.users[indexPath.row]
+        cell.textLabel?.text = user.name
 
         return cell
+    }
+
+    func add() {
+        self.fetcher.add {
+            self.users = self.fetcher.fetchLocalUsers()
+            self.tableView.reloadData()
+        }
     }
 }
