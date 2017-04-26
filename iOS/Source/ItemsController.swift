@@ -20,7 +20,7 @@ class ItemsController: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.dataSource = self
-        self.tableView.register(ItemCell.self, forCellReuseIdentifier: ItemCell.cellIdentifier)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(refresh))
 
         self.users = self.fetcher.fetchLocalUsers()
@@ -32,7 +32,7 @@ class ItemsController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.cellIdentifier, for: indexPath) as! ItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
         let user = self.users[indexPath.row]
         cell.textLabel?.text = user.name
 
