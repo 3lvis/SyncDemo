@@ -1,0 +1,15 @@
+PODS:
+  - Networking (3.0.3)
+  - Sync (3.2.2)
+
+DEPENDENCIES:
+  - Networking (~> 3.0)
+  - Sync (~> 3.0)
+
+SPEC CHECKSUMS:
+  Networking: e2c42013296d093e4249f8247acb08e36958a11a
+  Sync: 03025d09bfa014ee92e8a6da238a758196ce9cfe
+
+PODFILE CHECKSUM: 0c1443d9aa491767fa072e0a95e7b9ffb2b91576
+
+COCOAPODS: 1.2.1
