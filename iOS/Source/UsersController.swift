@@ -1,7 +1,7 @@
 import UIKit
 import Sync
 
-class ItemsController: UITableViewController {
+class UsersController: UITableViewController {
     var fetcher: Fetcher
 
     var users = [User]()
@@ -21,7 +21,6 @@ class ItemsController: UITableViewController {
 
         self.tableView.dataSource = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(refresh))
 
         self.users = self.fetcher.fetchLocalUsers()
         self.refresh()
@@ -33,6 +32,7 @@ class ItemsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
+        cell.accessoryType = .disclosureIndicator
         let user = self.users[indexPath.row]
         cell.textLabel?.text = user.name
 
@@ -49,5 +49,24 @@ class ItemsController: UITableViewController {
                 print(error)
             }
         }
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = self.users[indexPath.row]
+
+        let tabBarController = UITabBarController(nibName: nil, bundle: nil)
+
+        let albumsController = AlbumsController(user: user)
+        albumsController.tabBarItem = UITabBarItem(title: "Albums", image: nil, selectedImage: nil)
+
+        let postsController = PostsController(user: user)
+        postsController.tabBarItem = UITabBarItem(title: "Posts", image: nil, selectedImage: nil)
+
+        let profileController = ProfileController(user: user)
+        profileController.tabBarItem = UITabBarItem(title: "Profile", image: nil, selectedImage: nil)
+
+        tabBarController.setViewControllers([albumsController, postsController, profileController], animated: true)
+
+        self.navigationController?.pushViewController(tabBarController, animated: true)
     }
 }
