@@ -24,6 +24,7 @@ class ItemsController: UITableViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(refresh))
 
         self.users = self.fetcher.fetchLocalUsers()
+        self.refresh()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,12 +40,13 @@ class ItemsController: UITableViewController {
     }
 
     func refresh() {
-        self.fetcher.users { error in
-            if let _ = error {
-                // handle error
-            } else {
+        self.fetcher.users { result in
+            switch result {
+            case .success:
                 self.users = self.fetcher.fetchLocalUsers()
                 self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
             }
         }
     }

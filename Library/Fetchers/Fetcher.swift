@@ -16,13 +16,16 @@ class Fetcher {
         self.networking = Networking(baseURL: "https://jsonplaceholder.typicode.com")
     }
 
-    func users(completion: @escaping (_ error: NSError?) -> ()) {
-        self.networking.GET("/users") { json, error in
-            if let error = error {
-                completion(error)
-            } else {
-                let usersJSON = json as! [[String: Any]]
-                self.persistentContainer.sync(usersJSON, inEntityNamed: User.entity().name!, completion: completion)
+    func users(completion: @escaping (_ result: VoidResult) -> ()) {
+        self.networking.get("/users") { result in
+            switch result {
+            case .success(let response):
+                let usersJSON = response.arrayBody
+                self.persistentContainer.sync(usersJSON, inEntityNamed: User.entity().name!) { error in
+                    completion(.success)
+                }
+            case .failure(let response):
+                completion(.failure(response.error))
             }
         }
     }
@@ -32,4 +35,9 @@ class Fetcher {
 
         return try! self.persistentContainer.viewContext.fetch(request)
     }
+}
+
+enum VoidResult {
+    case success
+    case failure(NSError)
 }

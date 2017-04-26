@@ -1,6 +1,6 @@
 use_frameworks!
 
 target 'iOS' do
-  pod 'Sync', '~> 2.0'
-  pod 'Networking', '~> 2.0'
+  pod 'Sync', '~> 3.0'
+  pod 'Networking', '~> 3.0'
 end

@@ -1,21 +1,15 @@
 PODS:
-  - DATAStack (6.1.2)
-  - Networking (2.4.1)
-  - Sync (2.6.0):
-    - DATAStack (~> 6.1.2)
-    - SYNCPropertyMapper (~> 5.2.0)
-  - SYNCPropertyMapper (5.2.0)
+  - Networking (3.0.3)
+  - Sync (3.2.2)
 
 DEPENDENCIES:
-  - Networking (~> 2.0)
-  - Sync (~> 2.0)
+  - Networking (~> 3.0)
+  - Sync (~> 3.0)
 
 SPEC CHECKSUMS:
-  DATAStack: a45fc144e15193f1b22c26b507cc46655ce96a71
-  Networking: 933a5b4ffa9153fae7043ea4d7bf33ffa5cfb41d
-  Sync: 6c518c4347e261aaf66fc6c374a25c40fd4108e5
-  SYNCPropertyMapper: b3157f5183285c8a25ba23877b95a06ec2547e73
+  Networking: e2c42013296d093e4249f8247acb08e36958a11a
+  Sync: 03025d09bfa014ee92e8a6da238a758196ce9cfe
 
-PODFILE CHECKSUM: d7ae8bca11a5fc228b3c2ced39e34a786cf46934
+PODFILE CHECKSUM: 0c1443d9aa491767fa072e0a95e7b9ffb2b91576
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1
