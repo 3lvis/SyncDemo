@@ -12,18 +12,8 @@ public extension NSPersistentContainer {
      - parameter completion: The completion block, it returns an error if something in the Sync process goes wrong.
      */
     @available(iOS 10, watchOS 3, tvOS 10, OSX 10.12, *)
-    public func sync(_ changes: [[String: Any]], inEntityNamed entityName: String, completion: ((_ result: VoidResult) -> Void)?) {
-//        self.sync(changes, inEntityNamed: entityName, predicate: nil, parent: nil, parentRelationship: nil, operations: .all, completion: AResult.success)
-
-        self.sync(changes, inEntityNamed: entityName, predicate: nil, parent: nil, parentRelationship: nil, operations: .all) { error in
-            completion?(VoidResult.success)
-        }
-
-    }
-
-    public enum VoidResult {
-        case success
-        case failure(NSError)
+    public func sync(_ changes: [[String: Any]], inEntityNamed entityName: String, completion: ((_ error: NSError?) -> Void)?) {
+        self.sync(changes, inEntityNamed: entityName, predicate: nil, parent: nil, parentRelationship: nil, operations: .all, completion: completion)
     }
 
     /**
