@@ -57,13 +57,13 @@ class UsersController: UITableViewController {
         let tabBarController = UITabBarController(nibName: nil, bundle: nil)
 
         let albumsController = AlbumsController(user: user)
-        albumsController.tabBarItem = UITabBarItem(title: "Albums", image: nil, selectedImage: nil)
+        albumsController.tabBarItem = UITabBarItem(title: "Albums", image: UIImage(named: "albums"), selectedImage: nil)
 
         let postsController = PostsController(user: user)
-        postsController.tabBarItem = UITabBarItem(title: "Posts", image: nil, selectedImage: nil)
+        postsController.tabBarItem = UITabBarItem(title: "Posts", image: UIImage(named: "posts"), selectedImage: nil)
 
         let profileController = ProfileController(user: user)
-        profileController.tabBarItem = UITabBarItem(title: "Profile", image: nil, selectedImage: nil)
+        profileController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), selectedImage: nil)
 
         tabBarController.setViewControllers([albumsController, postsController, profileController], animated: true)
 
