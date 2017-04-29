@@ -2,12 +2,11 @@ import UIKit
 import Sync
 
 class UsersController: UITableViewController {
-    var fetcher: Fetcher
-
+    var apiClient: APIClient
     var users = [User]()
 
-    init(style: UITableViewStyle = .plain, fetcher: Fetcher) {
-        self.fetcher = fetcher
+    init(style: UITableViewStyle = .plain, apiClient: APIClient) {
+        self.apiClient = apiClient
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -22,7 +21,7 @@ class UsersController: UITableViewController {
         self.tableView.dataSource = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
 
-        self.users = self.fetcher.fetchLocalUsers()
+        self.users = self.apiClient.fetchLocalUsers()
         self.refresh()
     }
 
@@ -40,10 +39,10 @@ class UsersController: UITableViewController {
     }
 
     func refresh() {
-        self.fetcher.users { result in
+        self.apiClient.users { result in
             switch result {
             case .success:
-                self.users = self.fetcher.fetchLocalUsers()
+                self.users = self.apiClient.fetchLocalUsers()
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
@@ -56,7 +55,7 @@ class UsersController: UITableViewController {
 
         let tabBarController = UITabBarController(nibName: nil, bundle: nil)
 
-        let albumsController = AlbumsController(user: user)
+        let albumsController = AlbumsController(apiClient: self.apiClient, user: user)
         albumsController.tabBarItem = UITabBarItem(title: "Albums", image: UIImage(named: "albums"), selectedImage: nil)
 
         let postsController = PostsController(user: user)

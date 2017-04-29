@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0090ECBF003AE0AB5CEC73C0 /* Pods_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB769566EB1104F0DB937EC /* Pods_iOS.framework */; };
-		14425E591C97078A00F0FAD1 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14425E501C97078A00F0FAD1 /* Fetcher.swift */; };
+		14425E591C97078A00F0FAD1 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14425E501C97078A00F0FAD1 /* APIClient.swift */; };
 		146E27A91BCD51F200959BBA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 146E279F1BCD51F200959BBA /* LaunchScreen.xib */; };
 		146E27AA1BCD51F200959BBA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 146E27A11BCD51F200959BBA /* Images.xcassets */; };
 		14CB87E61C96F94F007376A6 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14CB87E41C96F94F007376A6 /* DataModel.xcdatamodeld */; };
@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		14425E501C97078A00F0FAD1 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		14425E501C97078A00F0FAD1 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		146E27891BCD51C800959BBA /* iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		146E27A01BCD51F200959BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		146E27A11BCD51F200959BBA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -53,18 +53,18 @@
 		141A6FD31BDE2DAB00CB6E82 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				14425E4F1C97078A00F0FAD1 /* Fetchers */,
+				14425E4F1C97078A00F0FAD1 /* APIClients */,
 				14CB87E31C96F94F007376A6 /* Models */,
 			);
 			path = Library;
 			sourceTree = "<group>";
 		};
-		14425E4F1C97078A00F0FAD1 /* Fetchers */ = {
+		14425E4F1C97078A00F0FAD1 /* APIClients */ = {
 			isa = PBXGroup;
 			children = (
-				14425E501C97078A00F0FAD1 /* Fetcher.swift */,
+				14425E501C97078A00F0FAD1 /* APIClient.swift */,
 			);
-			path = Fetchers;
+			path = APIClients;
 			sourceTree = "<group>";
 		};
 		146E278A1BCD51C800959BBA /* iOS */ = {
@@ -303,7 +303,7 @@
 				14CB87E61C96F94F007376A6 /* DataModel.xcdatamodeld in Sources */,
 				44A4D2961EB13C4700895646 /* AlbumsController.swift in Sources */,
 				44AE9F5D1EB113D200D6B40C /* UsersController.swift in Sources */,
-				14425E591C97078A00F0FAD1 /* Fetcher.swift in Sources */,
+				14425E591C97078A00F0FAD1 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
