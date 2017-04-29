@@ -20,7 +20,7 @@ class AlbumsController: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.dataSource = self
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
+        self.tableView.register(TableCell.self, forCellReuseIdentifier: TableCell.identifier)
 
         self.albums = self.apiClient.fetchLocalAlbums(for: self.user)
         self.refresh()
@@ -31,10 +31,8 @@ class AlbumsController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
-        cell.accessoryType = .disclosureIndicator
-        let album = self.albums[indexPath.row]
-        cell.textLabel?.text = album.title
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableCell.identifier, for: indexPath) as! TableCell
+        cell.title = self.albums[indexPath.row].title
 
         return cell
     }

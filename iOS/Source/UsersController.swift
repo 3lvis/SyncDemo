@@ -19,7 +19,7 @@ class UsersController: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.dataSource = self
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
+        self.tableView.register(TableCell.self, forCellReuseIdentifier: TableCell.identifier)
 
         self.users = self.apiClient.fetchLocalUsers()
         self.refresh()
@@ -30,10 +30,8 @@ class UsersController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
-        cell.accessoryType = .disclosureIndicator
-        let user = self.users[indexPath.row]
-        cell.textLabel?.text = user.name
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableCell.identifier, for: indexPath) as! TableCell
+        cell.title = self.users[indexPath.row].name
 
         return cell
     }

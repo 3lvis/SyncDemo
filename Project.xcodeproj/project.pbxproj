@@ -12,6 +12,7 @@
 		146E27A91BCD51F200959BBA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 146E279F1BCD51F200959BBA /* LaunchScreen.xib */; };
 		146E27AA1BCD51F200959BBA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 146E27A11BCD51F200959BBA /* Images.xcassets */; };
 		14CB87E61C96F94F007376A6 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14CB87E41C96F94F007376A6 /* DataModel.xcdatamodeld */; };
+		449151801EB530CE00A9FFE7 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4491517F1EB530CE00A9FFE7 /* TableCell.swift */; };
 		44A4D2961EB13C4700895646 /* AlbumsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A4D2951EB13C4700895646 /* AlbumsController.swift */; };
 		44A4D2981EB13C5400895646 /* PostsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A4D2971EB13C5400895646 /* PostsController.swift */; };
 		44A4D29A1EB13C5C00895646 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A4D2991EB13C5C00895646 /* ProfileController.swift */; };
@@ -28,6 +29,7 @@
 		146E27A21BCD51F200959BBA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14CB87E51C96F94F007376A6 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		3BB769566EB1104F0DB937EC /* Pods_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4491517F1EB530CE00A9FFE7 /* TableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		44A4D2951EB13C4700895646 /* AlbumsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsController.swift; sourceTree = "<group>"; };
 		44A4D2971EB13C5400895646 /* PostsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsController.swift; sourceTree = "<group>"; };
 		44A4D2991EB13C5C00895646 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				44A4D29B1EB13C6A00895646 /* PhotosController.swift */,
 				44A4D2971EB13C5400895646 /* PostsController.swift */,
 				44A4D2991EB13C5C00895646 /* ProfileController.swift */,
+				4491517F1EB530CE00A9FFE7 /* TableCell.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				44A4D29C1EB13C6A00895646 /* PhotosController.swift in Sources */,
 				44A4D2981EB13C5400895646 /* PostsController.swift in Sources */,
 				14CB87E61C96F94F007376A6 /* DataModel.xcdatamodeld in Sources */,
+				449151801EB530CE00A9FFE7 /* TableCell.swift in Sources */,
 				44A4D2961EB13C4700895646 /* AlbumsController.swift in Sources */,
 				44AE9F5D1EB113D200D6B40C /* UsersController.swift in Sources */,
 				14425E591C97078A00F0FAD1 /* APIClient.swift in Sources */,
