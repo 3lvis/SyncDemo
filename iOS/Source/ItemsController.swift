@@ -39,7 +39,7 @@ class ItemsController: UITableViewController {
         return cell
     }
 
-    func refresh() {
+    @objc func refresh() {
         self.fetcher.users { result in
             switch result {
             case .success:

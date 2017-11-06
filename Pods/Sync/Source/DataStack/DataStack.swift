@@ -27,13 +27,11 @@ import CoreData
 
     private var containerURL = URL.directoryURL()
 
-    private var _mainContext: NSManagedObjectContext?
-
     /**
      The context for the main queue. Please do not use this to mutate data, use `performInNewBackgroundContext`
      instead.
      */
-    public lazy var mainContext: NSManagedObjectContext = {
+    @objc public lazy var mainContext: NSManagedObjectContext = {
         let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         context.undoManager = nil
         context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
@@ -48,7 +46,7 @@ import CoreData
      The context for the main queue. Please do not use this to mutate data, use `performBackgroundTask`
      instead.
      */
-    public var viewContext: NSManagedObjectContext {
+    @objc public var viewContext: NSManagedObjectContext {
         return self.mainContext
     }
 
@@ -61,7 +59,7 @@ import CoreData
         return context
     }()
 
-    private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+    @objc public private(set) lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.model)
         try! persistentStoreCoordinator.addPersistentStore(storeType: self.storeType, bundle: self.modelBundle, modelName: self.modelName, storeName: self.storeName, containerURL: self.containerURL)
 
@@ -80,7 +78,7 @@ import CoreData
      Initializes a DataStack using the bundle name as the model name, so if your target is called ModernApp,
      it will look for a ModernApp.xcdatamodeld.
      */
-    public override init() {
+    @objc public override init() {
         let bundle = Bundle.main
         if let bundleName = bundle.infoDictionary?["CFBundleName"] as? String {
             self.modelName = bundleName
@@ -94,7 +92,7 @@ import CoreData
      Initializes a DataStack using the provided model name.
      - parameter modelName: The name of your Core Data model (xcdatamodeld).
      */
-    public init(modelName: String) {
+    @objc public init(modelName: String) {
         self.modelName = modelName
         self.model = NSManagedObjectModel(bundle: self.modelBundle, name: self.modelName)
 
@@ -107,7 +105,7 @@ import CoreData
      - parameter storeType: The store type to be used, you have .InMemory and .SQLite, the first one is memory
      based and doesn't save to disk, while the second one creates a .sqlite file and stores things there.
      */
-    public init(modelName: String, storeType: DataStackStoreType) {
+    @objc public init(modelName: String, storeType: DataStackStoreType) {
         self.modelName = modelName
         self.storeType = storeType
         self.model = NSManagedObjectModel(bundle: self.modelBundle, name: self.modelName)
@@ -124,7 +122,7 @@ import CoreData
      - parameter storeType: The store type to be used, you have .InMemory and .SQLite, the first one is memory
      based and doesn't save to disk, while the second one creates a .sqlite file and stores things there.
      */
-    public init(modelName: String, bundle: Bundle, storeType: DataStackStoreType) {
+    @objc public init(modelName: String, bundle: Bundle, storeType: DataStackStoreType) {
         self.modelName = modelName
         self.modelBundle = bundle
         self.storeType = storeType
@@ -145,7 +143,7 @@ import CoreData
      name is AwesomeApp then the .sqlite file will be named AwesomeApp.sqlite, this attribute allows your to
      change that.
      */
-    public init(modelName: String, bundle: Bundle, storeType: DataStackStoreType, storeName: String) {
+    @objc public init(modelName: String, bundle: Bundle, storeType: DataStackStoreType, storeName: String) {
         self.modelName = modelName
         self.modelBundle = bundle
         self.storeType = storeType
@@ -168,7 +166,7 @@ import CoreData
      change that.
      - parameter containerURL: The container URL for the sqlite file when a store type of SQLite is used.
      */
-    public init(modelName: String, bundle: Bundle, storeType: DataStackStoreType, storeName: String, containerURL: URL) {
+    @objc public init(modelName: String, bundle: Bundle, storeType: DataStackStoreType, storeName: String, containerURL: URL) {
         self.modelName = modelName
         self.modelBundle = bundle
         self.storeType = storeType
@@ -185,7 +183,7 @@ import CoreData
      - parameter storeType: The store type to be used, you have .InMemory and .SQLite, the first one is memory
      based and doesn't save to disk, while the second one creates a .sqlite file and stores things there.
      */
-    public init(model: NSManagedObjectModel, storeType: DataStackStoreType) {
+    @objc public init(model: NSManagedObjectModel, storeType: DataStackStoreType) {
         self.model = model
         self.storeType = storeType
 
@@ -205,7 +203,7 @@ import CoreData
     /**
      Returns a new main context that is detached from saving to disk.
      */
-    public func newDisposableMainContext() -> NSManagedObjectContext {
+    @objc public func newDisposableMainContext() -> NSManagedObjectContext {
         let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         context.persistentStoreCoordinator = self.disposablePersistentStoreCoordinator
         context.undoManager = nil
@@ -220,7 +218,7 @@ import CoreData
      Saving to this context doesn't merge with the main thread. This context is specially useful to run operations that don't block the main thread. To refresh your main thread objects for
      example when using a NSFetchedResultsController use `try self.fetchedResultsController.performFetch()`.
      */
-    public func newNonMergingBackgroundContext() -> NSManagedObjectContext {
+    @objc public func newNonMergingBackgroundContext() -> NSManagedObjectContext {
         let context = NSManagedObjectContext(concurrencyType: DataStack.backgroundConcurrencyType())
         context.persistentStoreCoordinator = self.persistentStoreCoordinator
         context.undoManager = nil
@@ -232,7 +230,7 @@ import CoreData
     /**
      Returns a background context perfect for data mutability operations. Make sure to never use it on the main thread. Use `performBlock` or `performBlockAndWait` to use it.
      */
-    public func newBackgroundContext() -> NSManagedObjectContext {
+    @objc public func newBackgroundContext() -> NSManagedObjectContext {
         let context = NSManagedObjectContext(concurrencyType: DataStack.backgroundConcurrencyType())
         context.persistentStoreCoordinator = self.persistentStoreCoordinator
         context.undoManager = nil
@@ -247,7 +245,7 @@ import CoreData
      Returns a background context perfect for data mutability operations.
      - parameter operation: The block that contains the created background context.
      */
-    public func performInNewBackgroundContext(_ operation: @escaping (_ backgroundContext: NSManagedObjectContext) -> Void) {
+    @objc public func performInNewBackgroundContext(_ operation: @escaping (_ backgroundContext: NSManagedObjectContext) -> Void) {
         let context = self.newBackgroundContext()
         let contextBlock: @convention(block) () -> Void = {
             operation(context)
@@ -260,7 +258,7 @@ import CoreData
      Returns a background context perfect for data mutability operations.
      - parameter operation: The block that contains the created background context.
      */
-    public func performBackgroundTask(operation: @escaping (_ backgroundContext: NSManagedObjectContext) -> Void) {
+    @objc public func performBackgroundTask(operation: @escaping (_ backgroundContext: NSManagedObjectContext) -> Void) {
         self.performInNewBackgroundContext(operation)
     }
 
@@ -289,7 +287,7 @@ import CoreData
     }
 
     // Drops the database.
-    public func drop(completion: ((_ error: NSError?) -> Void)? = nil) {
+    @objc public func drop(completion: ((_ error: NSError?) -> Void)? = nil) {
         self.writerContext.performAndWait {
             self.writerContext.reset()
 
@@ -299,23 +297,11 @@ import CoreData
                 self.persistentStoreCoordinator.performAndWait {
                     for store in self.persistentStoreCoordinator.persistentStores {
                         guard let storeURL = store.url else { continue }
+                        try! self.oldDrop(storeURL: storeURL)
+                    }
 
-                        do {
-                            if #available(iOS 9, OSX 10.11, tvOS 9, watchOS 2, *) {
-                                try self.persistentStoreCoordinator.destroyPersistentStore(at: storeURL, ofType: self.storeType.type, options: store.options)
-                                try! self.persistentStoreCoordinator.addPersistentStore(storeType: self.storeType, bundle: self.modelBundle, modelName: self.modelName, storeName: self.storeName, containerURL: self.containerURL)
-                            } else {
-                                try! self.oldDrop(storeURL: storeURL)
-                            }
-
-                            DispatchQueue.main.async {
-                                completion?(nil)
-                            }
-                        } catch let error as NSError {
-                            DispatchQueue.main.async {
-                                completion?(NSError(info: "Failed dropping the data stack.", previousError: error))
-                            }
-                        }
+                    DispatchQueue.main.async {
+                        completion?(nil)
                     }
                 }
             }
@@ -365,12 +351,12 @@ import CoreData
     ///   - context: The context against which request should be executed.
     /// - Returns: An array containing managed objects, managed object IDs, or dictionaries as appropriate for a fetch request; an empty array if request is a save request, or nil if an error occurred.
     /// - Throws: If an error occurs, upon return contains an NSError object that describes the problem.
-    public func execute(_ request: NSPersistentStoreRequest, with context: NSManagedObjectContext) throws -> Any {
+    @objc public func execute(_ request: NSPersistentStoreRequest, with context: NSManagedObjectContext) throws -> Any {
         return try self.persistentStoreCoordinator.execute(request, with: context)
     }
 
     // Can't be private, has to be internal in order to be used as a selector.
-    func mainContextDidSave(_ notification: Notification) {
+    @objc func mainContextDidSave(_ notification: Notification) {
         self.saveMainThread { error in
             if let error = error {
                 fatalError("Failed to save objects in main thread: \(error)")
@@ -379,14 +365,14 @@ import CoreData
     }
 
     // Can't be private, has to be internal in order to be used as a selector.
-    func newDisposableMainContextWillSave(_ notification: Notification) {
+    @objc func newDisposableMainContextWillSave(_ notification: Notification) {
         if let context = notification.object as? NSManagedObjectContext {
             context.reset()
         }
     }
 
     // Can't be private, has to be internal in order to be used as a selector.
-    func backgroundContextDidSave(_ notification: Notification) throws {
+    @objc func backgroundContextDidSave(_ notification: Notification) throws {
         if Thread.isMainThread && TestCheck.isTesting == false {
             throw NSError(info: "Background context saved in the main thread. Use context's `performBlock`", previousError: nil)
         } else {
